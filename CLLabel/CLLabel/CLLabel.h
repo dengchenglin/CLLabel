@@ -36,5 +36,6 @@ typedef NS_ENUM(NSInteger,NSTextVerticalAlignment){
 @property (nonatomic,assign) enum NSUnderlineStyle undelineStyle;   //下划线样式
 @property (nonatomic,copy)   NSArray *underlineRanges;      //下划线作用区间
 
--(CGFloat)getHeightforWidth:(CGFloat)width;
+-(CGSize)getHeightConstrainedToSize:(CGSize)size;
+
 @end

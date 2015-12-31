@@ -42,7 +42,24 @@
     label.undelineStyle = NSUnderlineStyleThick;
     label.underlineColor = [UIColor blackColor];
     label.underlineRanges = @[[NSValue valueWithRange:[label.text rangeOfString:@"字间距、行间距、段间距,支持居上、居中、居下对齐"]]];
-   
+    CGSize size = [label getHeightConstrainedToSize:CGSizeMake(self.view.bounds.size.width - 20, self.view.bounds.size.height)];
+     //[label getAttributedStringHeightWidthValue:self.view.bounds.size.height - 20];
+    [label setFrame:CGRectMake(10, 20, size.width, size.height)];
+    
+    
+    CLLabel * label1 = [[CLLabel alloc]init];
+    label1.backgroundColor = [UIColor brownColor];
+    [self.view addSubview:label1];
+    label1.text = @"根据约束得出宽度";
+    label1.font = [UIFont systemFontOfSize:18];
+    label1.textColor = [UIColor whiteColor];
+    label1.characterSpacing = 3.0;
+    CGSize size1 = [label1 getHeightConstrainedToSize:CGSizeMake(self.view.bounds.size.width - 20, 100)];
+    [label1 setFrame:CGRectMake(10, self.view.bounds.size.height - 40, size1.width, size1.height)];
+    
+
+    
+    
 }
 
 @end

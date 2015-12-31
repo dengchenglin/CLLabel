@@ -112,12 +112,12 @@
 }
 - (void)drawRect:(CGRect)rect {
     if(!_attributedText)return;
+    if(rect.size.height==0||rect.size.width==0)return;
     [self configurationAttributedText];
     CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, [self getLayoutFrame]);
     CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, NULL);
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
     //告诉context需要进行矩阵转换
     CGContextSetTextMatrix(context , CGAffineTransformIdentity);
@@ -252,16 +252,38 @@
     }
 }
 
--(CGFloat)getHeightforWidth:(CGFloat)width{
-    if(!_attributedText)return 0;
+-(CGSize)getHeightConstrainedToSize:(CGSize)size{
+    if(!_attributedText)return CGSizeZero;
+    [self configurationAttributedText];
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
-    CGSize textSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0,0), nil, CGSizeMake(width, CGFLOAT_MAX), nil);
+    CGRect drawingRect = CGRectMake(0, 0, size.width, size.height);      CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, drawingRect);
+    CTFrameRef ctFrame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0,0), path, NULL);
+    CGPathRelease(path);
     CFRelease(framesetter);
-    return textSize.height;
+    
+    CFArrayRef lines =  CTFrameGetLines(ctFrame);
+    CFIndex count = CFArrayGetCount(lines);
+    CGPoint origins[count];
+    CTFrameGetLineOrigins(ctFrame, CFRangeMake(0, 0), origins);
+    CGPoint lastPoint = origins[count - 1];
+    
+    CGFloat ascent;
+    CGFloat descent;
+    CGFloat leading;
+    CGFloat width = CTLineGetTypographicBounds(CFArrayGetValueAtIndex(lines, count - 1), &ascent, &descent, &leading);
+    
+    CGFloat height = size.height - lastPoint.y + descent;//+1为了纠正descent转换成int小数点后舍去的值
+    
+    CFRelease(ctFrame);
+    if(count > 1){
+        return CGSizeMake(size.width, height < 0?size.height:height);
+    }
+    return CGSizeMake(width, height);
 }
 -(CGRect)getLayoutFrame{
     CGRect rect = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-    CGFloat height = [self getHeightforWidth:self.bounds.size.width];
+    CGFloat height = [self getHeightConstrainedToSize:CGSizeMake(rect.size.width, 100000)].height;
     if(_textVerticalAlignment == NSTextVerticalAlignmentCenter){
         return CGRectMake(0, (self.bounds.size.height - height)/2, self.bounds.size.width, height);
     }
