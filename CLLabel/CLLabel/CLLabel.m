@@ -273,8 +273,7 @@
     CGFloat leading;
     CGFloat width = CTLineGetTypographicBounds(CFArrayGetValueAtIndex(lines, count - 1), &ascent, &descent, &leading);
     
-    CGFloat height = size.height - (int)lastPoint.y + (int) descent +1;//+1为了纠正descent转换成int小数点后舍去的值
-    
+    CGFloat height = size.height - (int)lastPoint.y + (int) descent +1;    
     CFRelease(ctFrame);
     if(count > 1){
         return CGSizeMake(size.width, height < 0?size.height:height);
