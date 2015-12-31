@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32A1D5051C3568CA00928BF2 /* CLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A1D5041C3568CA00928BF2 /* CLLabel.m */; };
 		8FE24E311C34B88B004FE461 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE24E301C34B88B004FE461 /* main.m */; };
 		8FE24E341C34B88B004FE461 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE24E331C34B88B004FE461 /* AppDelegate.m */; };
 		8FE24E371C34B88B004FE461 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE24E361C34B88B004FE461 /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32A1D5031C3568CA00928BF2 /* CLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLabel.h; sourceTree = "<group>"; };
+		32A1D5041C3568CA00928BF2 /* CLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLabel.m; sourceTree = "<group>"; };
 		8FE24E2C1C34B88B004FE461 /* CLLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FE24E301C34B88B004FE461 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FE24E321C34B88B004FE461 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32A1D5021C3568CA00928BF2 /* CLLabel */ = {
+			isa = PBXGroup;
+			children = (
+				32A1D5031C3568CA00928BF2 /* CLLabel.h */,
+				32A1D5041C3568CA00928BF2 /* CLLabel.m */,
+			);
+			path = CLLabel;
+			sourceTree = "<group>";
+		};
 		8FE24E231C34B88B004FE461 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +70,7 @@
 		8FE24E2E1C34B88B004FE461 /* CLLabel */ = {
 			isa = PBXGroup;
 			children = (
+				32A1D5021C3568CA00928BF2 /* CLLabel */,
 				8FE24E321C34B88B004FE461 /* AppDelegate.h */,
 				8FE24E331C34B88B004FE461 /* AppDelegate.m */,
 				8FE24E351C34B88B004FE461 /* ViewController.h */,
@@ -110,6 +123,7 @@
 				TargetAttributes = {
 					8FE24E2B1C34B88B004FE461 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = Q2SPBFS69G;
 					};
 				};
 			};
@@ -152,6 +166,7 @@
 				8FE24E371C34B88B004FE461 /* ViewController.m in Sources */,
 				8FE24E341C34B88B004FE461 /* AppDelegate.m in Sources */,
 				8FE24E311C34B88B004FE461 /* main.m in Sources */,
+				32A1D5051C3568CA00928BF2 /* CLLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +276,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CLLabel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dengchenglin.CLLabel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -272,10 +290,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CLLabel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dengchenglin.CLLabel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -298,6 +319,7 @@
 				8FE24E451C34B88B004FE461 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
