@@ -37,5 +37,4 @@ typedef NS_ENUM(NSInteger,NSTextVerticalAlignment){
 @property (nonatomic,copy)   NSArray *underlineRanges;      //下划线作用区间
 
 -(CGSize)getHeightConstrainedToSize:(CGSize)size;
-
 @end
