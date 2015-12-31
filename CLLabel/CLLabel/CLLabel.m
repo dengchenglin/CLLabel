@@ -13,6 +13,7 @@
 }
 -(instancetype)init{
     if(self = [super init]){
+        self.backgroundColor = [UIColor whiteColor];
         _font = [UIFont systemFontOfSize:17];
         _textColor = [UIColor blackColor];
         _textVerticalAlignment = NSTextVerticalAlignmentTop;
@@ -25,6 +26,7 @@
 }
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
+        self.backgroundColor = [UIColor whiteColor];
         _font = [UIFont systemFontOfSize:17];
         _textColor = [UIColor blackColor];
         _textVerticalAlignment = NSTextVerticalAlignmentTop;
