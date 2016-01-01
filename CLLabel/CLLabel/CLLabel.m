@@ -82,6 +82,10 @@
     _headIndent = headIndent;
     [self setNeedsDisplay];
 }
+-(void)setTailIndent:(CGFloat)tailIndent{
+    _tailIndent = tailIndent;
+    [self setNeedsDisplay];
+}
 -(void)setShowUnderline:(BOOL)showUnderline{
     _showUnderline = showUnderline;
     [self setNeedsDisplay];
@@ -178,12 +182,20 @@
     paragraphfirstlineHeadIndent.valueSize = sizeof(CGFloat);
     paragraphfirstlineHeadIndent.value = &firstLineHeadIndent;
     
-    //段缩进(除首行)
+    
+    //段行左缩进
     CGFloat headIndent = _headIndent;
     CTParagraphStyleSetting paragraphHeadIndent;
     paragraphHeadIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
     paragraphHeadIndent.valueSize = sizeof(CGFloat);
     paragraphHeadIndent.value = &headIndent;
+    
+    //段行右缩进
+    CGFloat tailIndent = _tailIndent;
+    CTParagraphStyleSetting paragraphTailIndent;
+    paragraphTailIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
+    paragraphTailIndent.valueSize = sizeof(CGFloat);
+    paragraphTailIndent.value = &tailIndent;
 
     //换行模式
     CTLineBreakMode linBreakMode = kCTLineBreakByWordWrapping;
@@ -198,8 +210,8 @@
     lineBreakModeStye.valueSize = sizeof(CTLineBreakMode);
     
     
-    CTParagraphStyleSetting settings[] ={alignmentStyle,lineSpaceStyle,paragraphSpaceStyle,paragraphfirstlineHeadIndent,paragraphHeadIndent,lineBreakModeStye};
-    CTParagraphStyleRef style = CTParagraphStyleCreate(settings ,5);
+    CTParagraphStyleSetting settings[] ={alignmentStyle,lineSpaceStyle,paragraphSpaceStyle,paragraphfirstlineHeadIndent,paragraphHeadIndent,paragraphTailIndent,lineBreakModeStye};
+    CTParagraphStyleRef style = CTParagraphStyleCreate(settings ,7);
     [_attributedText addAttribute:(__bridge id)kCTParagraphStyleAttributeName value:(__bridge id)style range:lengthRange];
     
 

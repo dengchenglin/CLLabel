@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger,NSTextVerticalAlignment){
 @property (nonatomic,assign) CGFloat paragraphSpacing;    //段间距
 @property (nonatomic,assign) CGFloat firstLineHeadIndent; //首行缩进
 @property (nonatomic,assign) CGFloat headIndent;          //段头缩进
-
+@property (nonatomic,assign) CGFloat tailIndent;          //段尾缩进
 
 
 //随便写写
